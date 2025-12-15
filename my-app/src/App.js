@@ -37,10 +37,11 @@ export const App = () => {
 					<ul className={styles['steps-list']}>
 						{steps.map((step, index) => {
 							const isDone = index < activeIndex;
+							const isActive = index === activeIndex;
 
 							return (
-								<li key={step.id} className={`${styles['steps-item']} ${isDone ? styles.done : ''}`}>
-									<button className={styles['steps-item-button']}>{index + 1}</button>
+								<li key={step.id} className={`${styles['steps-item']} ${isDone ? styles.done : ''} ${isActive ? styles.active : ''}`}>
+									<button className={styles['steps-item-button']} onClick={() => setActiveIndex(index)}>{index + 1}</button>
 									{step.title}
 								</li>
 							)
